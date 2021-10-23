@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "SourceCodePro-Bold";
+  src: local("SourceCodePro-Bold"),
+  url("~@/assets/fonts/SourceCodePro-Bold/SourceCodePro-Bold.otf"),
+  url("~@/assets/fonts/SourceCodePro-Bold/SourceCodePro-Bold.ttf"),
+  url("~@/assets/fonts/SourceCodePro-Bold/SourceCodePro-Bold.woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SourceCodePro-Medium";
+  src: local("SourceCodePro-Medium"),
+  url("~@/assets/fonts/SourceCodePro-Medium/SourceCodePro-Medium.otf"),
+  url("~@/assets/fonts/SourceCodePro-Medium/SourceCodePro-Medium.ttf"),
+  url("~@/assets/fonts/SourceCodePro-Medium/SourceCodePro-Medium.woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SourceCodePro-Regular";
+  src: local("SourceCodePro-Regular"),
+  url("~@/assets/fonts/SourceCodePro-Regular/SourceCodePro-Regular.otf"),
+  url("~@/assets/fonts/SourceCodePro-Regular/SourceCodePro-Regular.ttf"),
+  url("~@/assets/fonts/SourceCodePro-Regular/SourceCodePro-Regular.woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NothingYouCouldDo-Regular";
+  src: local("SourceCodePro-Regular"),
+  url("~@/assets/fonts/NothingYouCouldDo-Regular/NothingYouCouldDo-Regular.otf"),
+  url("~@/assets/fonts/NothingYouCouldDo-Regular/NothingYouCouldDo-Regular.ttf"),
+  url("~@/assets/fonts/NothingYouCouldDo-Regular/NothingYouCouldDo-Regular.woff");
+  font-weight: 400;
+  font-style: normal;
+}
+

@@ -1,0 +1,40 @@
+@mixin flexSettings($flex-direction, $justify-content, ) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+}
+
+@mixin buttons() {
+  width: 230px;
+  height: 70px;
+  background-color: transparent;
+  outline: none;
+  border-radius: 50px;
+  border-color: #fff;
+  color: #fff;
+  letter-spacing: 2px;
+  font-family: SourceCodePro-Bold, sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+@mixin subtitles() {
+  margin-bottom: 10px;
+  color: #4c5a86;
+  font-family: SourceCodePro-Medium, sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+@mixin titles() {
+  margin-bottom: 60px;
+  font-family: SourceCodePro-Medium, sans-serif;
+  font-size: 55px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+
+}

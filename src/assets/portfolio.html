@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)http://192.168.1.67:8080/ -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="http://192.168.1.67:8080/favicon.ico">
+    <title>portfolio</title>
+  <link href="./portfolio_files/app.js.завантаження" rel="preload" as="script"><link href="./portfolio_files/chunk-vendors.js.завантаження" rel="preload" as="script"><style type="text/css">@font-face {
+  font-family: "SourceCodePro-Bold";
+  src: local("SourceCodePro-Bold"), url(/fonts/SourceCodePro-Bold.29f7da52.otf), url(/fonts/SourceCodePro-Bold.03c11f6b.ttf), url(/fonts/SourceCodePro-Bold.4e55f5a3.woff);
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceCodePro-Medium";
+  src: local("SourceCodePro-Medium"), url(/fonts/SourceCodePro-Medium.9f322c4e.otf), url(/fonts/SourceCodePro-Medium.f621c504.ttf), url(/fonts/SourceCodePro-Medium.1c93d97e.woff);
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SourceCodePro-Regular";
+  src: local("SourceCodePro-Regular"), url(/fonts/SourceCodePro-Regular.a0795f58.otf), url(/fonts/SourceCodePro-Regular.b484b32f.ttf), url(/fonts/SourceCodePro-Regular.2da4432a.woff);
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NothingYouCouldDo-Regular";
+  src: local("SourceCodePro-Regular"), url(/fonts/NothingYouCouldDo-Regular.48208b4a.otf), url(/fonts/NothingYouCouldDo-Regular.5518c113.ttf), url(/fonts/NothingYouCouldDo-Regular.624f4c82.woff);
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#app {
+  min-height: 100vh;
+  font-family: "SourceCodePro-Regular", sans-serif;
+  font-size: 14px;
+}
+#app .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  align-items: center;
+  padding: 30px calc(50vw - 600px);
+  font-family: "SourceCodePro-Bold", sans-serif;
+  line-height: 1.2;
+  letter-spacing: 3px;
+}
+#app .header__logo {
+  width: 150px;
+  height: 25px;
+}
+#app .header__logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#app .header .menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-basis: 40%;
+}
+#app .header .menu__list {
+  position: relative;
+  list-style: none;
+}
+#app .header .menu__list:after {
+  content: "";
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  height: 2px;
+  background-color: #4ac4cf;
+  transition: 0.5s;
+  opacity: 0;
+}
+#app .header .menu__list:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #4ac4cf;
+  transition: 0.5s;
+  opacity: 0;
+}
+#app .header .menu__list:hover:after {
+  width: 60%;
+  opacity: 1;
+}
+#app .header .menu__list:hover:before {
+  width: 80%;
+  opacity: 1;
+}
+#app .header .menu__list a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+#app .header .social {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}
+#app .header .social__link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+#app .header .social__link:hover {
+  background-color: #fff;
+}
+#app .header .social__link:hover svg {
+  fill: #4ac4cf;
+}
+#app .header .social__link svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}</style><style type="text/css">@charset 'UTF-8';
+/* Icons */
+@font-face {
+  font-family: 'slick';
+  src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAATsAA0AAAAAB2wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAE0AAAABoAAAAcdIcYB0dERUYAAAS0AAAAHAAAAB4AJwANT1MvMgAAAZwAAABRAAAAYFAQ/45jbWFwAAACAAAAAFcAAAFiIhFFt2dhc3AAAASsAAAACAAAAAj//wADZ2x5ZgAAAmgAAAE1AAACLD+btmBoZWFkAAABMAAAAC8AAAA2AAEx+2hoZWEAAAFgAAAAHAAAACQD5QIFaG10eAAAAfAAAAAQAAAAFgZKAEpsb2NhAAACWAAAABAAAAAQATYBoG1heHAAAAF8AAAAHQAAACAASwBHbmFtZQAAA6AAAADcAAABbgUngcJwb3N0AAAEfAAAAC4AAABFOXjBpHjaY2BkYGAA4vMGfuHx/DZfGbiZGEDgfGFFPZxWZVBlvM14G8jlYABLAwAT1QnNAHjaY2BkYGC8zcDAoMfEAAJANiMDKmABADBkAe942mNgZGBgYGdwYWBiAAEQycgAEnMA8xkACcgAkwAAAHjaY2BmYmCcwMDKwMDow5jGwMDgDqW/MkgytDAwMDGwcjKAQQNQCZBSYICCgDTXFAYHhkTFSYwP/j9g0GO8/f82A0QNA+NtsBIFBkYANHMN4wAAAHjaY2KAACYIVoVAAALCAJt42mNgYGBmgGAZBkYGEIgB8hjBfBYGByDNw8DBwARkMzAkKigpTlCc9P8/WB0S7/+i+4/uld4rgZoAB4xsDHAhRiYgwcSApoCBcsBMBTNYGGgGAEdEDyUAAAAAAAAAAAAAZgCKANABFnjadZBdToNAEMd3CrtAl5TQLtS0LCoN0A8SGkBI+mAfPET75B1896HppfQcvnII4w3cLYpW6k4ymdn9z8xvBwEKUQg11OgBIXAYWUEQR1uIZoFGpLGxKy3PqrIq8+waXIfJ+5mQSSvkvXwRqqocu1D39QMl2JgvN9zzhsyk1GRDz+OBfzMioCqx0rtdLYo0SiZTZttsOkmidBkveKibFF4Oep9SI46bqk3Twhp4iihUemrMWFPy2NRbthfqKkHi/PxlJLITZdAiSj6ouZ+tn9eZz78DuD9LZYB6bZ8rlCAUVuVdkULjxV4sIEysIc/KSyPmnJDdjhCOdQ0fCTliTX/tjH3ysWao+71qaNjHQjcQwrcuyl+WLZQthCMotJP/h+Xjazz+hfTeRWmG4zOiSyif/q1OtAAAAHjabY49asNAEIU/2ZJDfkiRIvXapUFCEqpcptABUrg3ZhEiQoKVfY9UqVLlGDlADpAT5e16IUWysMz3hjfzBrjjjQT/EjKpCy+4YhN5yZoxcirPe+SMWz4jr6S+5UzSa3VuwpTnBfc8RF7yxDZyKs9r5IxHPiKv1P9iZqDnyAvMQ39UecbScVb/gJO03Xk4CFom3XYK1clhMdQUlKo7/d9NF13RkIdfy+MV7TSe2sl11tRFaXYmJKpWTd7kdVnJ8veevZKc+n3I93t9Jnvr5n4aTVWU/0z9AI2qMkV42mNgYkAGjAzogB0sysTgwtDOyMTIzJlYVJRfnpOaVsIFZhVlpmeUAABuKQkSAAAAAAAB//8AAnjaY2BkYGDgAWIxIGZiYARCNiBmAfMYAAPgADV42mNgYGBkAIKrS9Q5QPT5wop6GA0APf8GGAAA)
+    format('woff');
+}
+/* Arrows */
+.slick-prev,
+.slick-next {
+  font-size: 0;
+  line-height: 0;
+
+  position: absolute;
+  top: 50%;
+
+  display: block;
+
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  transform: translate(0, -50%);
+
+  cursor: pointer;
+
+  color: transparent;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+  color: transparent;
+  outline: none;
+  background: transparent;
+}
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before {
+  opacity: 1;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+  opacity: 0.25;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick';
+  font-size: 20px;
+  line-height: 1;
+
+  opacity: 0.75;
+  color: white;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev {
+  left: -25px;
+}
+[dir='rtl'] .slick-prev {
+  right: -25px;
+  left: auto;
+}
+.slick-prev:before {
+  content: '←';
+}
+[dir='rtl'] .slick-prev:before {
+  content: '→';
+}
+
+.slick-next {
+  right: -25px;
+}
+[dir='rtl'] .slick-next {
+  right: auto;
+  left: -25px;
+}
+.slick-next:before {
+  content: '→';
+}
+[dir='rtl'] .slick-next:before {
+  content: '←';
+}
+
+/* Dots */
+.slick-dotted.slick-slider {
+  margin-bottom: 30px;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: -25px;
+
+  display: block;
+
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+
+  text-align: center;
+}
+.slick-dots li {
+  position: relative;
+
+  display: inline-block;
+
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  padding: 0;
+
+  cursor: pointer;
+}
+.slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+
+  display: block;
+
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+
+  cursor: pointer;
+
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+.slick-dots li button:hover,
+.slick-dots li button:focus {
+  outline: none;
+}
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before {
+  opacity: 1;
+}
+.slick-dots li button:before {
+  font-family: 'slick';
+  font-size: 6px;
+  line-height: 20px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 20px;
+  height: 20px;
+
+  content: '•';
+  text-align: center;
+
+  opacity: 0.25;
+  color: black;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: black;
+}
+</style><style type="text/css">.home {
+  height: 100vh;
+  width: 100vw;
+  background-color: #92909f;
+}
+.home__sliders {
+  height: 100%;
+  width: 100%;
+}
+.home__sliders .slick-list {
+  height: 100%;
+}
+.home__sliders .slick-track {
+  height: 100%;
+}
+.home__sliders .slick-slide {
+  height: 100%;
+}
+.home__sliders .slick-slide div {
+  height: 100%;
+}
+.home__slider {
+  height: 100%;
+  width: 100%;
+}</style></head>
+  <body>
+    <noscript>
+      <strong>We're sorry but portfolio doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"><header class="header"><a href="http://192.168.1.67:8080/views/Home" class="header__logo"><img src="./portfolio_files/logo.44d5a2ba.png" alt="logo"></a><ul class="header__menu menu"><li class="menu__list"><a href="http://192.168.1.67:8080/views/Home" class=""> Home </a></li><li class="menu__list"><a href="http://192.168.1.67:8080/views/About" class=""> About </a></li><li class="menu__list"><a href="http://192.168.1.67:8080/views/Contacts" class=""> Contacts </a></li></ul><div class="header__social social"><a href="http://192.168.1.67:8080/" class="social__link"><svg class="social__link-svg"><use xlink:href="/img/sprite.c990b198.svg#facebook"></use></svg></a><a href="http://192.168.1.67:8080/" class="social__link"><svg class="social__link-svg"><use xlink:href="/img/sprite.c990b198.svg#twitter"></use></svg></a><a href="http://192.168.1.67:8080/" class="social__link"><svg class="social__link-svg"><use xlink:href="/img/sprite.c990b198.svg#instagram"></use></svg></a></div></header><section class="home"><div data-v-3d1a4f76="" dir="ltr" class="home__sliders slick-slider slick-initialized"><div data-v-3d1a4f76="" class="slick-list"><div data-v-e4caeaf8="" data-v-3d1a4f76="" class="slick-track" style="width: 10801px; opacity: 1;"><div data-v-e4caeaf8="" tabindex="-1" data-index="0" aria-hidden="false" class="slick-slide slick-active slick-current" style="outline: none; width: 1543px; position: relative; left: 0px; opacity: 1; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;"><div data-v-e4caeaf8=""><div data-v-e4caeaf8="" tabindex="-1" class="home__slider" style="width: 100%; display: inline-block;"><img data-v-e4caeaf8="" src="http://192.168.1.67:8080/" alt="" class="home__slider-img"><div data-v-e4caeaf8="" class="home__slider-block slideBlock"><h2 data-v-e4caeaf8="" class="slideBlock__subtitle"> IT’S NOT JUST LOVE FOR MUSIC </h2><h1 data-v-e4caeaf8="" class="slideBlock__title"> It’s My Passion </h1><button data-v-e4caeaf8="" class="slideBlock__button"> See All Events </button></div></div></div></div><div data-v-e4caeaf8="" tabindex="-1" data-index="1" aria-hidden="true" class="slick-slide" style="outline: none; width: 1543px; position: relative; left: -1543px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;"></div><div data-v-e4caeaf8="" tabindex="-1" data-index="2" aria-hidden="true" class="slick-slide" style="outline: none; width: 1543px; position: relative; left: -3086px; opacity: 0; transition: opacity 500ms ease 0s, visibility 500ms ease 0s;"></div></div></div><ul data-v-3d1a4f76="" class="slick-dots" style="display: block;"><li class="slick-active"><button>1</button></li><li class=""><button>2</button></li><li class=""><button>3</button></li></ul></div></section></div>
+    <!-- built files will be auto injected -->
+  <script type="text/javascript" src="./portfolio_files/chunk-vendors.js.завантаження"></script><script type="text/javascript" src="./portfolio_files/app.js.завантаження"></script>
+
+</body></html>
