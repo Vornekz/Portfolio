@@ -9,7 +9,7 @@
         <div class="date-main__block" v-for="(data, i) in tureDateBlocks" :key="`ture-${i}`">
           <p class="date-main__block-time" v-html="data.time"/>
           <p class="date-main__block-info" v-html="data.info"/>
-          <button class="date-main__block-button" @click="redirectToLink('/Contacts')">
+          <button class="date-main__block-button" @click="redirectToLink">
             {{ data.button }}
           </button>
         </div>
@@ -70,8 +70,10 @@ export default class Ture extends Vue {
     }
   ]
 
-  redirectToLink(link: string) {
-    window.location = link as any;
+  redirectToLink() {
+    if (this.$route.name !== "Contacts") {
+      this.$router.push({ name: 'Contacts'})
+    }
   }
 }
 </script>

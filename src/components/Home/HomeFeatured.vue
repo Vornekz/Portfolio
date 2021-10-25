@@ -9,7 +9,7 @@
     <div class="featured__main">
       <span class="timer">{{timeUntilEvent}}</span>
       <img class="featured__main-img" src="@/assets/img/homeFeatured-event-min.jpg" alt="background">
-      <button class="featured__main-button" @click="redirectToLink('/Contacts')">Buy Tickets</button>
+      <button class="featured__main-button" @click="redirectToLink">Buy Tickets</button>
     </div>
   </section>
 </template>
@@ -39,8 +39,8 @@ export default class HomeFeatured extends Vue {
     clearInterval(this.updateMoment)
   }
 
-  redirectToLink(link:string) {
-    window.location = link as any;
+  redirectToLink() {
+    this.$router.push({ name: 'Contacts'})
   }
 
   get timeUntilEvent():string {

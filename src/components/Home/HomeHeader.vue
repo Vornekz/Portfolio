@@ -54,8 +54,8 @@ import {Component} from 'vue-property-decorator';
 
 export default class HomeHeader extends Vue {
   scrollTo() {
-    const homeEl = document.querySelector(".home") as HTMLDivElement;
-    let homeEnd: number = homeEl.scrollHeight;
+    const home = document.querySelector(".home") as HTMLDivElement
+    let homeEnd: number = home.scrollHeight;
     window.scroll(0, homeEnd);
   }
 }

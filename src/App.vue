@@ -1,27 +1,27 @@
 <template>
   <div id="app">
     <header class="header">
-      <div class="header__logo">
-        <a href="/">
+      <div class="header__logo" @click="homeSlider">
+        <router-link to="/" >
           <img src="./assets/img/logo.png" alt="logo">
-        </a>
+        </router-link>
       </div>
       <div class="header__burger" :class="{'burger-exit': burgerShow}" @click="burgerMenuShow"></div>
       <ul class="header__menu menu" :class="{'burger-show': burgerShow}">
-        <li class="menu__list" id="Home" :class="{ 'hover':$route.name === 'Home' }">
-          <a href="/">
+        <li class="menu__list" id="Home" :class="{ 'hover':$route.name === 'Home' }" @click="homeSlider">
+          <router-link to="/" >
             Home
-          </a>
+          </router-link>
         </li>
-        <li class="menu__list" id="About" :class="{ 'hover':$route.name === 'About' }">
-          <a href="/About">
+        <li class="menu__list" id="About" :class="{ 'hover':$route.name === 'About' }"  @click="aboutSlider">
+          <router-link to="/About">
             About
-          </a>
+          </router-link>
         </li>
         <li class="menu__list" id="Contacts" :class="{ 'hover':$route.name === 'Contacts' }">
-          <a href="/Contacts">
+          <router-link to="/Contacts">
             Contacts
-          </a>
+          </router-link>
         </li>
       </ul>
       <div class="header__social social">
@@ -51,12 +51,12 @@
       <p class="footer__text">
         DJ FOX © 2021 \ ALL RIGHTS RESERVED
       </p>
-      <a href="/Contacts" class="footer__link">
+      <router-link to="/Contacts" class="footer__link">
         <svg class="footer__link-svg">
           <use xlink:href="./assets/sprite.svg#mail"></use>
         </svg>
         <p>Contact Me</p>
-      </a>
+      </router-link>
     </footer>
 
   </div>
@@ -94,6 +94,7 @@ export default class App extends Vue {
       }
     })
   }
+
 
 
   burgerMenuShow() {

@@ -1,5 +1,8 @@
 import Vue from "vue"
 import VueRouter, {RouteConfig, RouterOptions} from "vue-router"
+import Home from "@/views/Home.vue";
+import About from "@/views/About.vue";
+import Contacts from "@/views/Contacts.vue";
 
 Vue.use(VueRouter)
 
@@ -8,24 +11,24 @@ const routes: RouteConfig[] = [
     {
         path: "/",
         name: "Home",
-        component: () => import("@/views/Home.vue"),
+        component: Home
     },
     {
         path: "/About",
         name: "About",
-        component: () => import("@/views/About.vue")
+        component: About
     },
     {
         path: "/Contacts",
         name: "Contacts",
-        component: () => import("@/views/Contacts.vue")
+        component: Contacts
     }
 ]
 
 const routerOptions: RouterOptions = {
     routes,
     mode: "history",
-    base: "/Portfolio"
+    base: "/Portfolio/"
 };
 
 const router = new VueRouter(routerOptions);

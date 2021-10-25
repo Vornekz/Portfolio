@@ -6,9 +6,9 @@
       </h2>
     </div>
     <footer class="contacts-header__footer">
-      <a href="/">
+      <router-link to="/">
         Home
-      </a>
+      </router-link>
       <h3 class="contacts-header__footer-contacts">
         contacts
       </h3>

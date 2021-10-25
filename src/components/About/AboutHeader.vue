@@ -6,9 +6,9 @@
       </h2>
     </div>
     <footer class="about-header__footer">
-      <a href="/">
+      <router-link to="/">
         Home
-      </a>
+      </router-link>
       <h3 class="about-header__footer-about">
         About
       </h3>
