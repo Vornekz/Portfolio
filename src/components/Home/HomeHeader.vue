@@ -9,7 +9,7 @@
           <h1 class="slider__title animate__animated animate__fadeInUp">
             It’s My Passion
           </h1>
-          <button class="slider__button animate__animated animate__fadeInUp">
+          <button class="slider__button animate__animated animate__fadeInUp" @click="scrollTo()">
             See All Events
           </button>
         </div>
@@ -22,7 +22,7 @@
           <h1 class="slider__title ">
             Your #1 DJ
           </h1>
-          <button class="slider__button ">
+          <button class="slider__button " @click="scrollTo()">
             See All Events
           </button>
         </div>
@@ -35,7 +35,7 @@
           <h1 class="slider__title ">
             Top DJing Skills
           </h1>
-          <button class="slider__button ">
+          <button class="slider__button" @click="scrollTo()">
             See All Events
           </button>
         </div>
@@ -45,21 +45,25 @@
 </template>
 
 <script lang="ts">
+import $ from "jquery"
 import Vue from "vue"
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
-@Component ({
+@Component({
   name: 'HomeHeader',
 })
 
 export default class HomeHeader extends Vue {
-
+  scrollTo() {
+    const homeEl = document.querySelector(".home") as HTMLDivElement;
+    let homeEnd: number = homeEl.scrollHeight;
+    window.scroll(0, homeEnd);
+  }
 }
 </script>
 
 <style lang="scss">
 @import "~@/assets/mixins";
-@import "~@/assets/fonts";
 @import "~@/assets/vars";
 
 .home {
@@ -168,6 +172,7 @@ export default class HomeHeader extends Vue {
         &__title {
           font-family: NothingYouCouldDo-Regular, sans-serif;
           margin-bottom: 40px;
+          text-align: center;
           font-size: 100px;
           opacity: 0;
 

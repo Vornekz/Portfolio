@@ -16,7 +16,7 @@
           <h3 class="main-info__article-title">
             TEASING THE DEMO OF MY NEW TRACK ‘I NEED YOU’
           </h3>
-          <a href="" class="main-info__article-link">Read More</a>
+          <a href="/About" class="main-info__article-link">Read More</a>
         </article>
       </div>
       <div class="news__main-info main-info">
@@ -28,7 +28,7 @@
           <h3 class="main-info__article-title">
             BRING YOUR FAVORITE ARTIST TO YOUR CITY!
           </h3>
-          <a href="" class="main-info__article-link">Read More</a>
+          <a href="/About" class="main-info__article-link">Read More</a>
         </article>
       </div>
       <div class="news__main-info main-info">
@@ -40,7 +40,7 @@
           <h3 class="main-info__article-title">
             NEW SINGLE: ‘RAVE ON’ (RAVERZ 2019 ANTHEM)
           </h3>
-          <a href="" class="main-info__article-link">Read More</a>
+          <a href="/About" class="main-info__article-link">Read More</a>
         </article>
       </div>
     </div>
@@ -49,7 +49,7 @@
 
 <script lang="ts">
 import Vue from "vue"
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
 @Component({
   name: 'HomeNews',
@@ -62,13 +62,16 @@ export default class HomeNews extends Vue {
 
 <style lang="scss">
 @import "~@/assets/mixins";
-@import "~@/assets/fonts";
 @import "~@/assets/vars";
 
 .news {
   padding: 100px $calcPadding;
   color: $textCommonColor;
   background-color: #222d4f;
+
+  @media screen and (max-width: 992px) {
+    padding: 40px 0;
+  }
 
   &__subtitle {
     @include subtitles();
@@ -83,6 +86,17 @@ export default class HomeNews extends Vue {
     align-items: center;
     color: #000;
 
+    @media screen and (max-width: 1200px) {
+      width: 800px;
+      margin: 0 auto;
+    }
+
+    @media screen and (max-width: 992px) {
+      @include flexSettings(column, space-between);
+      width: 100%;
+    }
+
+
     .main-info {
       position: relative;
       z-index: 0;
@@ -90,8 +104,17 @@ export default class HomeNews extends Vue {
       width: 30%;
       margin-right: 20px;
 
+      @media screen and (max-width: 992px) {
+        width: 500px;
+        margin-bottom: 40px;
+      }
+
       &:last-child {
         margin-right: 0;
+
+        @media screen and (max-width: 992px) {
+          margin-right: 20px;
+        }
       }
 
       &__img {
@@ -149,7 +172,7 @@ export default class HomeNews extends Vue {
             display: block;
             position: absolute;
             top: -30px;
-            left: -3  5px;
+            left: -35px;
             width: 150px;
             height: 1px;
             background-color: #e1e1e1;
@@ -172,6 +195,10 @@ export default class HomeNews extends Vue {
         top: -22px;
         left: 20px;
         transition: 0.5s;
+
+        @media screen and (max-width: 992px) {
+          display: none;
+        }
       }
 
       &:hover {

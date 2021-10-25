@@ -49,30 +49,36 @@
 
 <script lang="ts">
 import Vue from "vue"
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
-@Component ({
+@Component({
   name: "HomePhoto"
 
 })
-export default class HomePhoto extends Vue{
+export default class HomePhoto extends Vue {
 
 }
 </script>
 
 <style lang="scss">
 @import "~@/assets/mixins";
-@import "~@/assets/fonts";
 @import "~@/assets/vars";
 
 .photos {
   display: grid;
   grid-template:minmax(auto, 300px) / 1fr 1fr 1fr 1fr;
+
+  @media screen and (max-width: 1200px) {
+    grid-template:minmax(auto, 300px) minmax(auto, 300px) / 1fr 1fr;
+  }
+
   &__photo {
     height: 100%;
     position: relative;
+
     &-img {
       height: 100%;
+
       img {
         width: 100%;
         height: 100%;
@@ -132,6 +138,7 @@ export default class HomePhoto extends Vue{
         text-transform: uppercase;
       }
     }
+
     &:hover {
       .photo-about {
         opacity: 1;

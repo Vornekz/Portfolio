@@ -1,40 +1,41 @@
 <template>
   <div id="app">
     <header class="header">
-      <div class="header__logo" v-on:click="homeSlider">
-        <router-link to="/">
+      <div class="header__logo">
+        <a href="/">
           <img src="./assets/img/logo.png" alt="logo">
-        </router-link>
+        </a>
       </div>
-      <ul class="header__menu menu">
-        <li class="menu__list" id="Home" :class="{ 'hover':$route.name === 'Home' }" v-on:click="homeSlider">
-          <router-link to="/">
+      <div class="header__burger" :class="{'burger-exit': burgerShow}" @click="burgerMenuShow"></div>
+      <ul class="header__menu menu" :class="{'burger-show': burgerShow}">
+        <li class="menu__list" id="Home" :class="{ 'hover':$route.name === 'Home' }">
+          <a href="/">
             Home
-          </router-link>
+          </a>
         </li>
         <li class="menu__list" id="About" :class="{ 'hover':$route.name === 'About' }">
-          <router-link to="/About">
+          <a href="/About">
             About
-          </router-link>
+          </a>
         </li>
         <li class="menu__list" id="Contacts" :class="{ 'hover':$route.name === 'Contacts' }">
-          <router-link to="/Contacts">
+          <a href="/Contacts">
             Contacts
-          </router-link>
+          </a>
         </li>
       </ul>
       <div class="header__social social">
-        <a href="" class="social__link">
+        <a href="https://www.facebook.com/" target="_blank" class="social__link">
           <svg class="social__link-svg">
             <use xlink:href="./assets/sprite.svg#facebook"></use>
           </svg>
         </a>
-        <a href="" class="social__link">
+        <a href="https://twitter.com/" target="_blank" class="social__link">
           <svg class="social__link-svg">
             <use xlink:href="./assets/sprite.svg#twitter"></use>
           </svg>
         </a>
-        <a href="" class="social__link">
+        <a href="https://www.instagram.com/" target="_blank" class="social__link">
           <svg class="social__link-svg">
             <use xlink:href="./assets/sprite.svg#instagram"></use>
           </svg>
@@ -44,81 +45,47 @@
 
     <router-view/>
 
-    <section class="tour">
-      <div class="tour__map">
-        <Map/>
-      </div>
-      <div class="tour__date">
-        <h3 class="tour__date-title">Tour Date</h3>
-        <div class="tour__date-main date-main">
-          <div class="date-main__block">
-            <p class="date-main__block-time">25 <br> <span>Feb</span></p>
-            <p class="date-main__block-info">ULTRA MUSIC FESTIVAL <br> <span>Miami, USA</span></p>
-            <button class="date-main__block-button">Bue tickets</button>
-          </div>
-          <div class="date-main__block">
-            <p class="date-main__block-time">12 <br> <span>Mar</span></p>
-            <p class="date-main__block-info">EDC ORLANDO <br> <span>Tinkler Field, Orlando, USA</span></p>
-            <button class="date-main__block-button">Bue tickets</button>
-          </div>
-          <div class="date-main__block">
-            <p class="date-main__block-time">24 <br> <span>Apr</span></p>
-            <p class="date-main__block-info">ELECTRIC ZOO <br> <span>Randall’s, Island Park, New York, USA</span></p>
-            <button class="date-main__block-button">Bue tickets</button>
-          </div>
-          <div class="date-main__block">
-            <p class="date-main__block-time">17 <br> <span>Jul</span></p>
-            <p class="date-main__block-info">NOCTURNAL WONDERLAND <br> <span>Glen Helen National Park, USA</span></p>
-            <button class="date-main__block-button">Bue tickets</button>
-          </div>
-          <div class="date-main__block">
-            <p class="date-main__block-time">18 <br> <span>Aug</span></p>
-            <p class="date-main__block-info">COACHELLA <br> <span>Empire Polo Club, Indio, USA</span></p>
-            <button class="date-main__block-button">Bue tickets</button>
-          </div>
-          <div class="date-main__block">
-            <p class="date-main__block-time">12 <br> <span>Oct</span></p>
-            <p class="date-main__block-info">LET IT ROLL <br> <span>Milovice, Czech Republic</span></p>
-            <button class="date-main__block-button">Bue tickets</button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <Ture/>
 
     <footer class="footer">
       <p class="footer__text">
         DJ FOX © 2021 \ ALL RIGHTS RESERVED
       </p>
-      <router-link to="/Contacts" class="footer__link">
+      <a href="/Contacts" class="footer__link">
         <svg class="footer__link-svg">
           <use xlink:href="./assets/sprite.svg#mail"></use>
         </svg>
         <p>Contact Me</p>
-      </router-link>
+      </a>
     </footer>
 
   </div>
 </template>
 
 <script lang="ts">
-import $, {ready} from "jquery"
+import $ from "jquery"
 import 'slick-carousel';
 import 'slick-carousel/slick/slick.css';
 import 'animate.css/animate.min.css';
-import Map from "@/components/Map.vue";
+import Ture from "@/components/Ture.vue";
 import Vue from "vue"
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
 @Component({
   name: "App",
   components: {
-    Map
+    Ture
   }
 })
 
 export default class App extends Vue {
+  private burgerShow: boolean = false;
+
   mounted() {
-    this.homeSlider()
+    this.homeSlider();
+    this.aboutSlider();
+
+
     $(window).scroll(() => {
       if (pageYOffset === 0) {
         $(".header").removeClass("scroll")
@@ -126,6 +93,11 @@ export default class App extends Vue {
         $(".header").addClass("scroll")
       }
     })
+  }
+
+
+  burgerMenuShow() {
+    this.burgerShow = !this.burgerShow
   }
 
   homeSlider() {
@@ -139,12 +111,52 @@ export default class App extends Vue {
       autoplaySpeed: 7000,
       speed: 1000,
       slidesToShow: 1,
-      slidesToScroll: 1
+      slidesToScroll: 1,
+      pauseOnHover: false,
+      "responsive": [
+        {
+          "breakpoint": 992,
+          "settings": {
+            dots: false
+          }
+        }
+      ]
     })
+
     $('.home__sliders').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
       let slide = $(".slider");
       slide.eq(nextSlide).children().addClass("animate__animated animate__fadeInUp");
       slide.eq(currentSlide).children().removeClass("animate__animated animate__fadeInUp");
+    })
+  }
+
+  aboutSlider() {
+    $(".about-me__awards").slick({
+      slidesToShow: 4,
+      lazyLoad: "ondemand",
+      dots: false,
+      infinite: true,
+      speed: 1000,
+      "responsive": [
+        {
+          "breakpoint": 1200,
+          "settings": {
+            slidesToShow: 3,
+          }
+        },
+        {
+          "breakpoint": 992,
+          "settings": {
+            slidesToShow: 2,
+          }
+        },
+        {
+          "breakpoint": 768,
+          "settings": {
+            slidesToShow: 1,
+          }
+        }
+      ]
     })
   }
 
@@ -156,6 +168,7 @@ export default class App extends Vue {
 @import "assets/fonts";
 @import "assets/mixins";
 @import "assets/vars";
+@import "assets/reset";
 
 * {
   margin: 0;
@@ -180,6 +193,57 @@ export default class App extends Vue {
     letter-spacing: 3px;
     transition: .4s;
 
+    @media screen and (max-width: 1200px) {
+      padding: 30px 100px;
+    }
+
+    @media screen and (max-width: 992px) {
+      padding: 23px 60px;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 23px 20px;
+      background-color: #1c2748;
+      border-bottom: 2px solid #fff;
+    }
+
+    &__burger {
+      display: none;
+
+      @media screen and (max-width: 768px) {
+        position: absolute;
+        left: 200px;
+        z-index: 3;
+        display: block;
+        width: 30px;
+        height: 30px;
+
+        &:before {
+          position: relative;
+          top: 10px;
+          content: "";
+          display: block;
+          width: 100%;
+          height: 2px;
+          background-color: #fff;
+          transition: 1s;
+
+        }
+        &:after {
+          position: relative;
+          top: 20px;
+          content: "";
+          display: block;
+          width: 100%;
+          height: 2px;
+          background-color: #fff;
+          transition: 1s;
+
+        }
+
+      }
+    }
+
     &__logo {
       width: 150px;
       height: 25px;
@@ -195,9 +259,28 @@ export default class App extends Vue {
       @include flexSettings(row, space-evenly);
       flex-basis: 40%;
 
+      @media screen and (max-width: 768px) {
+        background-color: #1c2748;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100vh;
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        border-right: 2px solid #fff;
+        left: -50vw;
+        padding: 125px 40px 0;
+        transition: 1s;
+
+      }
+
       &__list {
         position: relative;
         list-style: none;
+        @media screen and (max-width: 763px) {
+          margin-bottom: 20px;
+          height: 40px;
+        }
 
         &:after {
           content: "";
@@ -277,105 +360,7 @@ export default class App extends Vue {
   }
 }
 
-.tour {
-  @include flexSettings(row, flex-start);
-  height: 500px;
-  background-color: #222d4f;
 
-  &__map {
-    width: 50%;
-  }
-
-  &__date {
-    width: 80%;
-    max-width: 800px;
-    padding: 40px 40px;
-
-    &-title {
-      margin-bottom: 30px;
-      font-family: SourceCodePro-Bold, sans-serif;
-      font-size: 30px;
-      text-transform: uppercase;
-      color: $textCommonColor;
-    }
-
-    .date-main {
-      overflow: auto;
-      height: 370px;
-
-      &::-webkit-scrollbar {
-        background-color: #2d3858;
-        width: 10px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: #4c5a86;
-      }
-
-      &__block {
-        @include flexSettings(row, space-between);
-        margin-bottom: 20px;
-        min-height: 80px;
-        width: 95%;
-        background-color: #fff;
-
-        &-time {
-          position: relative;
-          padding-top: 15px;
-          text-align: center;
-          width: 15%;
-          color: #4ac4cf;
-          font-size: 30px;
-
-          span {
-            position: relative;
-            top: -20px;
-            text-transform: uppercase;
-            color: #000;
-            font-size: 14px;
-          }
-
-          &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 20%;
-            right: 15px;
-            width: 1px;
-            height: 60%;
-            background-color: #4ac4cf;
-          }
-        }
-
-        &-info {
-          padding-top: 20px;
-          width: 55%;
-          font-family: SourceCodePro-Bold, sans-serif;
-          font-size: 18px;
-
-          span {
-            font-family: SourceCodePro-Regular, sans-serif;
-            font-size: 14px;
-            color: #4ac4cf;
-          }
-        }
-
-        &-button {
-          @include buttons();
-          margin: auto 10px;
-          height: 50px;
-          color: #4ac4cf;
-          border-color: #4ac4cf;
-          transition: 1s;
-
-          &:hover {
-            color: $textCommonColor;
-            background-color: #4ac4cf;
-          }
-        }
-      }
-    }
-  }
-}
 
 .footer {
   @include flexSettings(row, space-between);
@@ -386,10 +371,14 @@ export default class App extends Vue {
   font-family: SourceCodePro-Bold, sans-serif;
   text-align: center;
 
+  @media screen and (max-width: 1200px) {
+    padding: 30px 100px;
+  }
+
   &__text {
   }
 
-  &__link{
+  &__link {
     text-decoration: none;
     color: #37549f;
     transition: .4s;
@@ -421,6 +410,23 @@ export default class App extends Vue {
     width: 80% !important;
     opacity: 1 !important;
   }
+}
+
+.burger-show {
+  left: 0 !important;
+}
+
+.burger-exit {
+  &:before {
+    top: 16px !important;
+    transform: rotate(226deg) !important;
+  }
+
+  &:after {
+    top: 14px !important;
+    transform: rotate(-226deg) !important;
+  }
+
 }
 
 .scroll {

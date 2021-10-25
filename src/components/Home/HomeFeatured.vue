@@ -1,7 +1,7 @@
 <template>
   <section class="featured">
     <h3 class="featured__subtitle">
-      TRIDENT FESTIVAL IN DUCHONKA, SLOVAKIA - JUNE 26, 2019
+      TRIDENT FESTIVAL IN DUCHONKA, SLOVAKIA - december 31, 2021
     </h3>
     <h2 class="featured__title">
       FEATURED EVENT
@@ -9,14 +9,14 @@
     <div class="featured__main">
       <span class="timer">{{timeUntilEvent}}</span>
       <img class="featured__main-img" src="@/assets/img/homeFeatured-event-min.jpg" alt="background">
-      <button class="featured__main-button">Buy Tickets</button>
+      <button class="featured__main-button" @click="redirectToLink('/Contacts')">Buy Tickets</button>
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from "vue"
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 import moment from "moment"
 
 @Component ({
@@ -39,6 +39,10 @@ export default class HomeFeatured extends Vue {
     clearInterval(this.updateMoment)
   }
 
+  redirectToLink(link:string) {
+    window.location = link as any;
+  }
+
   get timeUntilEvent():string {
     let seconds: number = this.event.diff(this.now, "seconds")
     let days: number = Math.floor(seconds / 86400);
@@ -47,13 +51,11 @@ export default class HomeFeatured extends Vue {
     let second: number = Math.floor(seconds % 86400 % 3600 % 60);
     return `${days}  :  ${hours}  :  ${minutes}  :  ${second}`
   }
-
 }
 </script>
 
 <style lang="scss">
 @import "~@/assets/mixins";
-@import "~@/assets/fonts";
 @import "~@/assets/vars";
 .featured {
   padding: 100px $calcPadding;
@@ -61,6 +63,10 @@ export default class HomeFeatured extends Vue {
   background-size: cover;
   margin: 0 auto;
   color: $textCommonColor;
+
+  @media screen and (max-width: 768px) {
+    padding: 80px;
+  }
 
   &__subtitle {
     @include subtitles();
@@ -81,6 +87,11 @@ export default class HomeFeatured extends Vue {
       top: -50px;
       color: #4ac3ce;
 
+      @media screen and (max-width: 768px) {
+        font-size: 30px;
+        top: -30px;
+      }
+
       &:after {
         content: "day hour min sec";
         display: block;
@@ -92,6 +103,10 @@ export default class HomeFeatured extends Vue {
         text-transform: capitalize;
         font-size: 43px;
         color: #4c5a86;
+
+        @media screen and (max-width: 768px) {
+          font-size: 30px;
+        }
       }
     }
 
@@ -99,6 +114,10 @@ export default class HomeFeatured extends Vue {
       width: 600px;
       height: 300px;
       object-fit: cover;
+      @media screen and (max-width: 768px) {
+        width: 400px;
+        height: 250px;
+      }
     }
     &-button {
       position: relative;
@@ -125,6 +144,10 @@ export default class HomeFeatured extends Vue {
       background-size: 100% 6px, 98.9% 6px, 6px 100%, 6px 100%;
       background-position: 0 0, 6px 100%, 0 6px, 100% 6px;
       background-repeat: no-repeat;
+
+      @media screen and (max-width: 1200px) {
+        display: none;
+      }
     }
   }
 }

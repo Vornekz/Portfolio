@@ -4,7 +4,7 @@
     <h2 class="videos__title">RECENT VIDEOS</h2>
     <div class="videos__main">
       <iframe
-          v-bind:src="video"
+          :src="video"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -12,35 +12,17 @@
 
       </iframe>
       <ul class="videos__main-list video-list">
-        <li class="video-list__li">
+        <li
+            class="video-list__li"
+            :class="{'video-hover': data.selected}"
+            v-for="(data, i) in videData"
+            :key="`video-${i}`"
+            @click="onVideoClick(videos[data.alt], i);"
+        >
           <div class="video-list__li-img">
-            <img src="@/assets/img/video-01-min.jpg" alt="video-01">
+            <img :src="data.imgSource" :alt="data.alt">
           </div>
-          <h4 class="video-list__li-about">Armin van Buuren Live at Tomorrowland 2015</h4>
-        </li>
-        <li class="video-list__li" @click="videoLoad">
-          <div class="video-list__li-img">
-            <img src="@/assets/img/video-02-min.jpg" alt="video-02">
-          </div>
-          <h4 class="video-list__li-about">Juicy M - Live at MEO Sudoeste Festival</h4>
-        </li>
-        <li class="video-list__li" @click="videoLoad">
-          <div class="video-list__li-img">
-            <img src="@/assets/img/video-03-min.jpg" alt="video-03">
-          </div>
-          <h4 class="video-list__li-about">Armin van Buuren feat. Angel Taylor - Make It Right</h4>
-        </li>
-        <li class="video-list__li">
-          <div class="video-list__li-img">
-            <img src="@/assets/img/video-04-min.jpg" alt="video-04">
-          </div>
-          <h4 class="video-list__li-about">Armin Only crew taking over Sydney! Armin Only VLOG</h4>
-        </li>
-        <li class="video-list__li">
-          <div class="video-list__li-img">
-            <img src="@/assets/img/video-05-min.jpg" alt="video-05">
-          </div>
-          <h4 class="video-list__li-about">Armin Only crew taking over San Francisco!</h4>
+          <h4 class="video-list__li-about">{{ data.about }}</h4>
         </li>
       </ul>
     </div>
@@ -49,7 +31,8 @@
 
 <script lang="ts">
 import Vue from "vue"
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
+
 interface Video {
   video1: string,
   video2: string,
@@ -58,12 +41,53 @@ interface Video {
   video5: string
 }
 
-@Component ({
+interface VideoData {
+  imgSource: string
+  about: string
+  alt: string,
+  selected: boolean
+}
+
+
+@Component({
   name: "HomeVideos"
 })
 
-export default class HomeVideos extends Vue{
+export default class HomeVideos extends Vue {
   private video: string = "";
+
+  private videData: VideoData[] = [
+    {
+      imgSource: "../assets/img/video-01-min.jpg",
+      about: "Armin van Buuren Live at Tomorrowland 2015",
+      alt: "video1",
+      selected: true
+    },
+    {
+      imgSource: "../assets/img/video-02-min.jpg",
+      about: "Juicy M - Live at MEO Sudoeste Festival",
+      alt: "video2",
+      selected: false
+    },
+    {
+      imgSource: "../assets/img/video-03-min.jpg",
+      about: "Armin van Buuren feat. Angel Taylor - Make It Right",
+      alt: "video3",
+      selected: false
+    },
+    {
+      imgSource: "../assets/img/video-04-min.jpg",
+      about: "Armin Only crew taking over Sydney! Armin Only VLOG",
+      alt: "video4",
+      selected: false
+    },
+    {
+      imgSource: "../assets/img/video-05-min.jpg",
+      about: "Armin Only crew taking over San Francisco!",
+      alt: "video5",
+      selected: false
+    }
+  ]
   private readonly videos: Video = {
     video1: "https://www.youtube.com/embed/4gRjnaitguQ",
     video2: "https://www.youtube.com/embed/mfMR-URQl80",
@@ -71,13 +95,19 @@ export default class HomeVideos extends Vue{
     video4: "https://www.youtube.com/embed/V3pPMUmIxAc",
     video5: "https://www.youtube.com/embed/N1DEOCUujUg"
   }
+  private lastVideoSelected: number = 0;
 
   mounted() {
     this.video = this.videos.video1;
   }
 
-  videoLoad() {
-    this.video = this.videos.video3;
+
+  onVideoClick(video: string, indexToSelect: number) {
+    this.video = video;
+
+    this.videData[this.lastVideoSelected].selected = false;
+    this.videData[indexToSelect].selected = true;
+    this.lastVideoSelected = indexToSelect;
   }
 }
 
@@ -85,7 +115,6 @@ export default class HomeVideos extends Vue{
 
 <style lang="scss">
 @import "~@/assets/mixins";
-@import "~@/assets/fonts";
 @import "~@/assets/vars";
 
 .videos {
@@ -105,19 +134,51 @@ export default class HomeVideos extends Vue{
     @include flexSettings(row, space-between);
     height: 400px;
 
+    @media screen and (max-width: 1200px) {
+      height: 1000px;
+      flex-direction: column;
+      align-items: center;
+    }
+    @media screen and (max-width: 768px) {
+      height: 750px;
+    }
+
     iframe {
       width: 60%;
       height: 100%;
+      @media screen and (max-width: 1200px) {
+        width: 800px;
+        height: 600px;
+        margin-bottom: 30px;
+      }
+      @media screen and (max-width: 992px) {
+        width: 600px;
+      }
+      @media screen and (max-width: 768px) {
+        width: 450px;
+        height: 350px;
+      }
     }
 
     .video-list {
       width: 40%;
       overflow: auto;
 
+      @media screen and (max-width: 1200px) {
+        width: 800px;
+      }
+      @media screen and (max-width: 992px) {
+        width: 600px;
+      }
+      @media screen and (max-width: 768px) {
+        width: 440px;
+      }
+
       &::-webkit-scrollbar {
         background-color: #2d3858;
         width: 10px;
       }
+
       &::-webkit-scrollbar-thumb {
         background-color: #4c5a86;
       }
@@ -128,6 +189,14 @@ export default class HomeVideos extends Vue{
         @include flexSettings(row, flex-start);
         align-items: center;
 
+        @media screen and (max-width: 1200px) {
+          width: 80%;
+        }
+        @media screen and (max-width: 768px) {
+          width: 100%;
+          padding: 0 20px;
+        }
+
         &:last-child {
           margin-bottom: 0;
         }
@@ -137,6 +206,13 @@ export default class HomeVideos extends Vue{
           height: 85px;
           margin-right: 30px;
           transition: .2s;
+
+          @media screen and (max-width: 1200px) {
+            height: 100%;
+          }
+
+          @media screen and (max-width: 768px) {
+          }
 
           img {
             width: 100%;
@@ -166,9 +242,20 @@ export default class HomeVideos extends Vue{
           }
         }
       }
-
-
     }
   }
+}
+
+.video-hover {
+  .video-list__li-img {
+    box-sizing: unset !important;
+    border-bottom: 3px solid #4ac3ce !important;
+    border-right: 3px solid #4ac3ce !important;
+  }
+
+  .video-list__li-about {
+    color: #4ac3ce !important;
+  }
+
 }
 </style>

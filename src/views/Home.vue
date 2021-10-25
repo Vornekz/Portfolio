@@ -15,7 +15,7 @@ import HomeVideos from "@/components/Home/HomeVideos.vue";
 import HomePhoto from "@/components/Home/HomePhoto.vue";
 import HomeNews from "@/components/Home/HomeNews.vue";
 import Vue from "vue";
-import {Component, Prop, Watch} from 'vue-property-decorator';
+import {Component} from 'vue-property-decorator';
 
 @Component ({
   name: 'Home',
