@@ -1,30 +1,33 @@
 import Vue from "vue"
-import Router from "vue-router"
-import Home from "@/views/Home.vue"
-import About from "@/views/About.vue";
-import Contacts from "@/views/Contacts.vue";
+import VueRouter, {RouteConfig, RouterOptions} from "vue-router"
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+
+const routes: RouteConfig[] = [
+    {
+        path: "/",
+        name: "Home",
+        component: () => import("@/views/Home.vue"),
+    },
+    {
+        path: "/About",
+        name: "About",
+        component: () => import("@/views/About.vue")
+    },
+    {
+        path: "/Contacts",
+        name: "Contacts",
+        component: () => import("@/views/Contacts.vue")
+    }
+]
+
+const routerOptions: RouterOptions = {
+    routes,
     mode: "history",
-    base: "/Portfolio/",
-    routes: [
-        {
-            path: "/",
-            name: "Home",
-            component: Home,
-        },
-        {
-            path: "/About",
-            name: "About",
-            component: About
-        },
-        {
-            path: "/Contacts",
-            name: "Contacts",
-            component: Contacts
-        },
+    base: "/Portfolio"
+};
 
-    ]
-})
+const router = new VueRouter(routerOptions);
+
+export default router;

@@ -45,7 +45,6 @@
 </template>
 
 <script lang="ts">
-import $ from "jquery"
 import Vue from "vue"
 import {Component} from 'vue-property-decorator';
 
