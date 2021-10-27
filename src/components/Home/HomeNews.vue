@@ -16,7 +16,7 @@
           <h3 class="main-info__article-title">
             TEASING THE DEMO OF MY NEW TRACK ‘I NEED YOU’
           </h3>
-          <router-link to="/About" class="main-info__article-link">Read More</router-link>
+          <router-link to="/" class="main-info__article-link">Read More</router-link>
         </article>
       </div>
       <div class="news__main-info main-info">
@@ -28,7 +28,7 @@
           <h3 class="main-info__article-title">
             BRING YOUR FAVORITE ARTIST TO YOUR CITY!
           </h3>
-          <router-link to="/About" class="main-info__article-link">Read More</router-link>
+          <router-link to="/" class="main-info__article-link">Read More</router-link>
         </article>
       </div>
       <div class="news__main-info main-info">
@@ -40,7 +40,7 @@
           <h3 class="main-info__article-title">
             NEW SINGLE: ‘RAVE ON’ (RAVERZ 2019 ANTHEM)
           </h3>
-          <router-link to="/About" class="main-info__article-link">Read More</router-link>
+          <router-link to="/" class="main-info__article-link">Read More</router-link>
         </article>
       </div>
     </div>
