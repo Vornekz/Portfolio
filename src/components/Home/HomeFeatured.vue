@@ -1,7 +1,7 @@
 <template>
   <section class="featured">
     <h3 class="featured__subtitle">
-      TRIDENT FESTIVAL IN DUCHONKA, SLOVAKIA - december 31, 2021
+      TRIDENT FESTIVAL IN DUCHONKA, SLOVAKIA - december 31, 2022
     </h3>
     <h2 class="featured__title">
       FEATURED EVENT
@@ -25,7 +25,7 @@ import moment from "moment"
 
 export default class HomeFeatured extends Vue {
   // private date: string = ""
-  private event = moment("2021-12-31");
+  private event = moment("2023-01-01");
   private now = moment();
   private updateMoment: number = 0;
 
