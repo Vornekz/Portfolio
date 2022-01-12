@@ -1,6 +1,8 @@
 <template>
   <section>
-    <ContactsHeader/>
+    <ContactsHeader
+      :slider="slider"
+    />
     <ContactsForm/>
   </section>
 </template>
@@ -9,7 +11,7 @@
 import ContactsHeader from "@/components/Contacts/ContactsHeader.vue";
 import ContactsForm from "@/components/Contacts/ContactsForm.vue";
 import Vue from "vue";
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 
 @Component({
   name: "Contacts",
@@ -20,7 +22,7 @@ import {Component} from 'vue-property-decorator';
 })
 
 export default class Contacts extends Vue {
-
+  @Prop({type: Function, required: true}) readonly slider: Function | undefined
 }
 </script>
 

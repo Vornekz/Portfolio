@@ -9,17 +9,17 @@
       <div class="header__burger" :class="{'burger-exit': burgerShow}" @click="burgerMenuShow"></div>
       <ul class="header__menu menu" :class="{'burger-show': burgerShow}">
         <li class="menu__list" id="Home" :class="{ 'hover':$route.name === 'Home' }" @click="homeSlider">
-          <router-link to="/" >
+          <router-link to="/">
             Home
           </router-link>
         </li>
         <li class="menu__list" id="About" :class="{ 'hover':$route.name === 'About' }"  @click="aboutSlider">
-          <router-link to="/About">
+          <router-link :to="{name: 'About', params: {slider: homeSlider}}">
             About
           </router-link>
         </li>
         <li class="menu__list" id="Contacts" :class="{ 'hover':$route.name === 'Contacts' }">
-          <router-link to="/Contacts">
+          <router-link :to="{name: 'Contacts', params: {slider: homeSlider}}">
             Contacts
           </router-link>
         </li>
@@ -51,7 +51,7 @@
       <p class="footer__text">
         DJ FOX © 2021 \ ALL RIGHTS RESERVED
       </p>
-      <router-link to="/Contacts" class="footer__link">
+      <router-link :to="{name: 'Contacts', params: {slider: homeSlider}}" class="footer__link">
         <svg class="footer__link-svg">
           <use xlink:href="./assets/sprite.svg#mail"></use>
         </svg>
@@ -81,10 +81,13 @@ import {Component} from 'vue-property-decorator';
 export default class App extends Vue {
   private burgerShow: boolean = false;
 
-  mounted() {
+  async mounted() {
     this.homeSlider();
     this.aboutSlider();
 
+    if ( this.$route.name !== "Home") {
+      await this.$router.replace({name: "Home"})
+    }
 
     $(window).scroll(() => {
       if (pageYOffset === 0) {
@@ -102,7 +105,7 @@ export default class App extends Vue {
   }
 
   homeSlider() {
-    $(".home__sliders").slick({
+    $(".home__sliders").not('.slick-initialized').slick({
       lazyLoad: "ondemand",
       arrows: false,
       dots: true,
@@ -110,7 +113,6 @@ export default class App extends Vue {
       infinite: true,
       autoplay: true,
       autoplaySpeed: 7000,
-      speed: 1000,
       slidesToShow: 1,
       slidesToScroll: 1,
       pauseOnHover: false,
@@ -132,12 +134,11 @@ export default class App extends Vue {
   }
 
   aboutSlider() {
-    $(".about-me__awards").slick({
+    $(".about-me__awards").not('.slick-initialized').slick({
       slidesToShow: 4,
       lazyLoad: "ondemand",
       dots: false,
       infinite: true,
-      speed: 1000,
       "responsive": [
         {
           "breakpoint": 1200,

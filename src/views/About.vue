@@ -1,6 +1,6 @@
 <template>
   <section>
-    <AboutHeader/>
+    <AboutHeader :slider="slider"/>
     <AboutMe/>
   </section>
 </template>
@@ -9,7 +9,7 @@
 import AboutHeader from "@/components/About/AboutHeader.vue";
 import AboutMe from "@/components/About/AboutMe.vue";
 import Vue from "vue";
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 
 @Component({
   name: "About",
@@ -20,7 +20,7 @@ import {Component} from 'vue-property-decorator';
 })
 
 export default class About extends Vue {
-
+  @Prop({type: Function, required: true}) readonly slider: Function | undefined
 }
 </script>
 

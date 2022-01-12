@@ -9,7 +9,7 @@
     <div class="featured__main">
       <span class="timer">{{timeUntilEvent}}</span>
       <img class="featured__main-img" src="@/assets/img/homeFeatured-event-min.jpg" alt="background">
-      <button class="featured__main-button" @click="redirectToLink">Buy Tickets</button>
+      <button class="featured__main-button">Buy Tickets</button>
     </div>
   </section>
 </template>
@@ -24,7 +24,7 @@ import moment from "moment"
 })
 
 export default class HomeFeatured extends Vue {
-  // private date: string = ""
+
   private event = moment("2023-01-01");
   private now = moment();
   private updateMoment: number = 0;
@@ -37,10 +37,6 @@ export default class HomeFeatured extends Vue {
 
   beforeDestroy() {
     clearInterval(this.updateMoment)
-  }
-
-  redirectToLink() {
-    this.$router.push({ name: 'Contacts'})
   }
 
   get timeUntilEvent():string {

@@ -6,9 +6,11 @@
       </h2>
     </div>
     <footer class="contacts-header__footer">
-      <router-link to="/">
-        Home
-      </router-link>
+      <div class="contacts-header__footer-home" @click="slider">
+        <router-link to="/">
+          Home
+        </router-link>
+      </div>
       <h3 class="contacts-header__footer-contacts">
         contacts
       </h3>
@@ -18,7 +20,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {Component} from 'vue-property-decorator';
+import {Component, Prop} from 'vue-property-decorator';
 
 @Component({
   name: "ContactsHeader",
@@ -26,6 +28,7 @@ import {Component} from 'vue-property-decorator';
 })
 
 export default class ContactsHeader extends Vue {
+  @Prop({type: Function, required: true}) readonly slider: Function | undefined
 
 }
 </script>
@@ -61,21 +64,23 @@ export default class ContactsHeader extends Vue {
     color: $textCommonColor;
     text-transform: uppercase;
 
-    a {
-      position: relative;
-      margin-right: 30px;
-      text-decoration: none;
-      font-size: 14px;
-      color: #4ac3ce;
+    &-home {
+      a {
+        position: relative;
+        margin-right: 30px;
+        text-decoration: none;
+        font-size: 14px;
+        color: #4ac3ce;
 
-      &:hover {
-        color: $textCommonColor;
-      }
+        &:hover {
+          color: $textCommonColor;
+        }
 
-      &:after {
-        content: "/";
-        position: absolute;
-        right: -20px;
+        &:after {
+          content: "/";
+          position: absolute;
+          right: -20px;
+        }
       }
     }
   }
