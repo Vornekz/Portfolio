@@ -58,31 +58,31 @@ export default class HomeVideos extends Vue {
 
   private videData: VideoData[] = [
     {
-      imgSource: "../assets/img/video-01-min.jpg",
+      imgSource: "./assets/img/video-01-min.jpg",
       about: "Armin van Buuren Live at Tomorrowland 2015",
       alt: "video1",
       selected: true
     },
     {
-      imgSource: "../assets/img/video-02-min.jpg",
+      imgSource: "./assets/img/video-02-min.jpg",
       about: "Juicy M - Live at MEO Sudoeste Festival",
       alt: "video2",
       selected: false
     },
     {
-      imgSource: "../assets/img/video-03-min.jpg",
+      imgSource: "./assets/img/video-03-min.jpg",
       about: "Armin van Buuren feat. Angel Taylor - Make It Right",
       alt: "video3",
       selected: false
     },
     {
-      imgSource: "../assets/img/video-04-min.jpg",
+      imgSource: "./assets/img/video-04-min.jpg",
       about: "Armin Only crew taking over Sydney! Armin Only VLOG",
       alt: "video4",
       selected: false
     },
     {
-      imgSource: "../assets/img/video-05-min.jpg",
+      imgSource: "./assets/img/video-05-min.jpg",
       about: "Armin Only crew taking over San Francisco!",
       alt: "video5",
       selected: false
@@ -158,6 +158,10 @@ export default class HomeVideos extends Vue {
         width: 450px;
         height: 350px;
       }
+      @media screen and (max-width: 520px) {
+        max-width: 100vw;
+      }
+
     }
 
     .video-list {
@@ -172,6 +176,9 @@ export default class HomeVideos extends Vue {
       }
       @media screen and (max-width: 768px) {
         width: 440px;
+      }
+      @media screen and (max-width: 520px) {
+        max-width: 300px;
       }
 
       &::-webkit-scrollbar {
@@ -228,6 +235,10 @@ export default class HomeVideos extends Vue {
           letter-spacing: 2px;
           line-height: 1.6;
           transition: .2s;
+
+          @media screen and (max-width: 520px) {
+            font-size: 12px;
+          }
         }
 
         &:hover {

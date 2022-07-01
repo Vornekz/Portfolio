@@ -158,6 +158,10 @@ export default class HomeHeader extends Vue {
         align-items: center;
         color: $textCommonColor;
 
+        @media screen and (max-width: 400px) {
+          padding-top: 60px;
+        }
+
         &__subtitle {
           font-family: "SourceCodePro-Medium", sans-serif;
           font-weight: 500;
@@ -166,6 +170,11 @@ export default class HomeHeader extends Vue {
           text-transform: uppercase;
           opacity: 0;
 
+          @media screen and (max-width: 400px){
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: center;
+          }
         }
 
         &__title {
@@ -175,6 +184,10 @@ export default class HomeHeader extends Vue {
           font-size: 100px;
           opacity: 0;
 
+          @media screen and (max-width: 400px) {
+            margin-bottom: 20px;
+            font-size: 50px;
+          }
         }
 
         &__button {

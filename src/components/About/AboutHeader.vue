@@ -52,6 +52,15 @@ export default class AboutHeader extends Vue {
       text-transform: uppercase;
       letter-spacing: 4px;
       color: $textCommonColor;
+
+      @media screen and (max-height: 550px) {
+        padding-top: 40px;
+      }
+
+      @media screen and (max-width: 320px) {
+        padding-top: 80px;
+      }
+
     }
   }
 

@@ -96,7 +96,6 @@ export default class HomeNews extends Vue {
       width: 100%;
     }
 
-
     .main-info {
       position: relative;
       z-index: 0;
@@ -107,6 +106,15 @@ export default class HomeNews extends Vue {
       @media screen and (max-width: 992px) {
         width: 500px;
         margin-bottom: 40px;
+      }
+
+      @media screen and (max-width: 520px) {
+        width: 300px;
+      }
+
+      @media screen and (max-width: 350px) {
+        width: 250px;
+
       }
 
       &:last-child {

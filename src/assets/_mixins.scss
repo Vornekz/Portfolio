@@ -28,6 +28,10 @@
   text-transform: uppercase;
   text-align: center;
 
+  @media screen and (max-width: 520px) {
+    font-size: 14px;
+  }
+
 }
 
 @mixin titles() {
@@ -40,6 +44,10 @@
 
   @media screen and (max-width: 768px) {
     font-size: 45px;
+  }
+
+  @media screen and (max-width: 520px) {
+    font-size: 30px;
   }
 
 }

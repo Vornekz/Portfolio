@@ -18,7 +18,7 @@
             About
           </router-link>
         </li>
-        <li class="menu__list" id="Contacts" :class="{ 'hover':$route.name === 'Contacts' }">
+        <li class="menu__list" id="Contacts" :class="{ 'hover':$route.name === 'Contacts' }" @click="winScroll">
           <router-link :to="{name: 'Contacts', params: {slider: homeSlider}}">
             Contacts
           </router-link>
@@ -131,6 +131,8 @@ export default class App extends Vue {
       slide.eq(nextSlide).children().addClass("animate__animated animate__fadeInUp");
       slide.eq(currentSlide).children().removeClass("animate__animated animate__fadeInUp");
     })
+
+    this.winScroll()
   }
 
   aboutSlider() {
@@ -160,6 +162,12 @@ export default class App extends Vue {
         }
       ]
     })
+
+    this.winScroll()
+  }
+
+  winScroll() {
+    window.scroll(0, 0)
   }
 
 }
@@ -207,6 +215,10 @@ export default class App extends Vue {
       padding: 23px 20px;
       background-color: #1c2748;
       border-bottom: 2px solid #fff;
+    }
+
+    @media screen and  (max-width: 400px) {
+      padding: 10px;
     }
 
     &__burger {
@@ -270,7 +282,7 @@ export default class App extends Vue {
         z-index: -1;
         top: 0;
         border-right: 2px solid #fff;
-        left: -50vw;
+        left: -100vw;
         padding: 125px 40px 0;
         transition: 1s;
 
@@ -335,6 +347,15 @@ export default class App extends Vue {
       @include flexSettings(row, space-between);
       align-items: center;
       width: 100px;
+      @media screen and (max-width: 320px) {
+        @include flexSettings(column, center);
+        align-items: flex-end;
+        padding-right: 20px;
+
+        &__link {
+          margin-bottom: 3px;
+        }
+      }
 
       &__link {
         @include flexSettings(row, center);

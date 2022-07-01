@@ -72,6 +72,10 @@ export default class HomePhoto extends Vue {
     grid-template:minmax(auto, 300px) minmax(auto, 300px) / 1fr 1fr;
   }
 
+  @media screen and (max-width: 520px) {
+    grid-template:minmax(auto, 350px) minmax(auto, 350px) minmax(auto, 350px) minmax(auto, 350px) / 1fr;
+  }
+
   &__photo {
     height: 100%;
     position: relative;

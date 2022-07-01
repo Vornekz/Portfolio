@@ -229,6 +229,10 @@ export default class AboutMe extends Vue {
         margin: 0 auto;
       }
 
+      @media screen and (max-width: 550px) {
+        width: 250px;
+      }
+
       &:after {
         content: "";
         display: block;

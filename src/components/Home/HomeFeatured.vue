@@ -64,6 +64,10 @@ export default class HomeFeatured extends Vue {
     padding: 80px;
   }
 
+  @media screen and (max-width: 520px) {
+    padding: 30px;
+  }
+
   &__subtitle {
     @include subtitles();
   }
@@ -88,6 +92,10 @@ export default class HomeFeatured extends Vue {
         top: -30px;
       }
 
+      @media screen and (max-width: 520px) {
+        font-size: 24px;
+      }
+
       &:after {
         content: "day hour min sec";
         display: block;
@@ -103,6 +111,10 @@ export default class HomeFeatured extends Vue {
         @media screen and (max-width: 768px) {
           font-size: 30px;
         }
+
+        @media screen and (max-width: 520px) {
+          font-size: 24px;
+        }
       }
     }
 
@@ -113,6 +125,10 @@ export default class HomeFeatured extends Vue {
       @media screen and (max-width: 768px) {
         width: 400px;
         height: 250px;
+      }
+
+      @media screen and (max-width: 520px) {
+        max-width: 300px;
       }
     }
     &-button {

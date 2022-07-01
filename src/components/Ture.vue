@@ -116,6 +116,10 @@ export default class Ture extends Vue {
       width: 400px;
       padding: 20px 0;
     }
+    @media screen and (max-width: 520px) {
+      width: 300px;
+      padding: 20px 0;
+    }
 
 
     &-title {
